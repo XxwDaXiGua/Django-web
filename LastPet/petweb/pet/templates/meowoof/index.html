@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="baseBody">
+{% load static %}
+<head>
+  <title>主页</title>
+    <style>
+        nav {
+          background-color: #f7d6e0;
+          position: fixed;
+          top: -50px;
+          width: 100%;
+          transition: top 0.3s;
+
+        }
+
+
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+
+        }
+
+        li {
+          float: left;
+            margin-top: 20px;
+        }
+
+        li a {
+          display: block;
+          color: darksalmon;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+            font-size: 20px;
+        }
+
+        .logout {
+          float: right;
+        }
+        .baseBody{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .baseh1 {
+            font-size: 2em;
+            text-align: center;
+            animation: fadeIn 2s;
+          }
+
+          .links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .base1 {
+            display: block;
+            text-decoration: none;
+            width: 250px;
+            height: 150px;
+            background-image: url("../../static/image/label1.jpg");
+            background-repeat: repeat;
+            background-size: 100%;
+            text-align: center;
+            color: #090909;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            animation: slideIn 1s ease-in-out;
+          }
+
+          .base2 {
+            display: block;
+            text-decoration: none;
+            width: 250px;
+            height: 150px;
+            background-image: url("../../static/image/label2.jpg");
+            background-repeat: repeat;
+            background-size: 100%;
+            text-align: center;
+            color: #090909;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            animation: slideIn 1s ease-in-out;
+          }
+
+          .base3 {
+            display: block;
+            text-decoration: none;
+            width: 250px;
+            height: 150px;
+            background-image: url("../../static/image/label3.jpg");
+            background-repeat: repeat;
+            background-size: 100%;
+            text-align: center;
+            color: #090909;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            animation: slideIn 1s ease-in-out;
+          }
+
+          /* 渐入动画效果 */
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+
+          .bjimg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            object-fit: cover;
+
+          }
+
+
+          /* 滑入动画效果 */
+          @keyframes slideIn {
+            from {
+              transform: translateX(-100%);
+            }
+            to {
+              transform: translateX(0);
+            }
+          }
+    </style>
+</head>
+<body class="baseBody">
+{% load static %}
+    <h1 class="baseh1">MEOWOOF</h1>
+    <nav>
+        <div style="background-color: #333333;
+                height: 2px"></div>
+
+    <ul>
+      <li><a href="{% url 'meowoof:pet' %}">宠物</a></li>
+      <li><a href="{% url 'meowoof:tool' %}">宠物用品</a></li>
+      <li><a href="{% url 'meowoof:suggestion' %}">宠物建议</a></li>
+      <li class="logout"><a href="{% url 'meowoof:logout' %}">登出</a></li>
+        <center>
+            <h3> 宠物详情</h3>
+        </center>
+    </ul>
+
+  </nav>
+    <!-- 背景视频 -->
+    <video src="../../static/image/back.mp4" class="bjimg" autoplay loop muted></video>
+
+    <!-- 超链接 -->
+    <div class="links">
+        <a class="base1" href="{% url 'meowoof:pet' %}"></a>
+        <a class="base2" href="{% url 'meowoof:tool' %}"></a>
+        <a class="base3" href="{% url 'meowoof:suggestion' %}"></a>
+
+
+    </div>
+
+
+</body>
+</html>

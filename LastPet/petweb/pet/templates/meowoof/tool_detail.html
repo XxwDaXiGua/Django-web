@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        nav {
+          background-color: #f7d6e0;
+          position: fixed;
+          top: -50px;
+          width: 100%;
+          transition: top 0.3s;
+
+        }
+
+
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+
+        }
+
+        li {
+          float: left;
+            margin-top: 20px;
+        }
+
+        li a {
+          display: block;
+          color: darksalmon;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+            font-size: 20px;
+        }
+
+        .logout {
+          float: right;
+        }
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f7f7f7;
+          margin: 0;
+          padding: 0;
+        }
+
+        header {
+          background-color: #f7d6e0;
+          padding: 20px;
+          text-align: center;
+        }
+
+        h1 {
+          color: #fff;
+          font-size: 24px;
+          margin: 0;
+        }
+
+        .pet-details {
+            margin-top: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
+
+        .pet-image {
+          width: 400px;
+          margin-right: 40px;
+        }
+
+        .pet-image img {
+          width: 100%;
+          border-radius: 4px;
+        }
+
+        .pet-info {
+
+          max-width: 500px;
+        }
+
+        .pet-info h2 {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+
+        .pet-info p {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+
+        .pet-info strong {
+          font-weight: bold;
+        }
+        .container1 {
+          max-width: 1000px;
+            margin-top: 200px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+{% load static %}
+<body background="../../static/image/pet.jpg"
+      style="background-repeat:no-repeat;
+               background-attachment:fixed;
+               background-size:100% 100%; ">
+
+    <nav>
+        <div style="background-color: #333333;
+                height: 2px"></div>
+
+    <ul>
+      <li><a href="{% url 'meowoof:pet' %}">宠物</a></li>
+      <li><a href="{% url 'meowoof:tool' %}">宠物用品</a></li>
+      <li><a href="{% url 'meowoof:suggestion' %}">宠物建议</a></li>
+      <li class="logout"><a href="{% url 'meowoof:logout' %}">登出</a></li>
+        <center>
+            <h3> 宠物详情</h3>
+        </center>
+    </ul>
+
+  </nav>
+
+    <p></p>
+    <div class="container1">
+        <section class="pet-details">
+            <div class="pet-image">
+                <img  height="350px" src="{{ tool.picture.url }}" alt="图片丢惹" />
+            </div>
+            <div class="pet-info">
+                  <h2 href="../pet_detail/{{ c.id }}/">{{tool.name}}</h2>
+                  <p><strong href="../pet_detail/{{ c.id }}/">信息：</strong>{{tool.info}}</p>
+
+            </div>
+      </section>
+    </div>
+
+
+
+</body>
+
+</html>

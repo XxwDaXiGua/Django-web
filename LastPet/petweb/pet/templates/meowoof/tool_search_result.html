@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
+    <style>
+        nav {
+          background-color: #f7d6e0;
+          position: fixed;
+          top: -50px;
+          width: 100%;
+          transition: top 0.3s;
+
+        }
+
+
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+
+        }
+
+        li {
+          float: left;
+            margin-top: 20px;
+        }
+
+        li a {
+          display: block;
+          color: darksalmon;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+            font-size: 20px;
+        }
+
+        .logout {
+          float: right;
+        }
+    </style>
+</head>
+<body background="../../static/image/pet.jpg"
+      style="background-repeat:no-repeat;
+               background-attachment:fixed;
+               background-size:100% 100%; ">
+    <nav>
+        <div style="background-color: #333333;
+                height: 2px"></div>
+
+    <ul>
+      <li><a href="{% url 'meowoof:pet' %}">宠物</a></li>
+      <li><a href="{% url 'meowoof:tool' %}">宠物用品</a></li>
+      <li><a href="{% url 'meowoof:suggestion' %}">宠物建议</a></li>
+      <li class="logout"><a href="{% url 'meowoof:logout' %}">登出</a></li>
+        <center>
+            <h3> 宠物详情</h3>
+        </center>
+    </ul>
+
+  </nav>
+    <!--这里搜索不适用表单，使用传进去字符串-->
+    <center>
+        <form  class="search-form" method="post" action="{% url "meowoof:pet_search_result" %}">
+        {% csrf_token %}
+        <input class="search-form-input" type="text" name="search_data" placeholder="请输入关键字" >
+
+        <input class="search-form-button" type="submit" value="查询" >
+    </form>
+    </center>
+
+
+    <section class="pet-gallery">
+        {% for c in tool_search__result %}
+           <a href="../tool_detail/{{ c.id }}/">
+            <div class="pet">
+                <img href="../tool_detail/{{ c.id }}/" width="360" height="270" src="{{ c.picture.url }}" alt="图片丢惹" />
+
+                <div class="pet-info">
+                    <h2>{{c.name}}</h2>
+                    <p>{{c.character}}</p>
+                </div>
+            </div>
+           </a>
+
+    {% endfor %}
+    </section>
+
+
+</body>
+<script>
+    var navbar = document.getElementById('navbar');
+    var prevScrollpos = window.pageYOffset;
+
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        navbar.classList.add('visible');
+      } else {
+        navbar.classList.remove('visible');
+      }
+      prevScrollpos = currentScrollPos;
+    };
+
+</script>
+</html>
